@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yu-pon Official Website | ユウポン公式サイト</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <style>
+        /*
+         * カスタムスタイルとTailwindのテーマ設定
+         * Playfair Display: 見出しやロゴに使用し、クラシックなジャズの雰囲気を出す
+         * Inter: 本文に使用し、読みやすさとモダンさを確保する
+         */
+        :root {
+            --color-primary: #1C3144; /* ディープネイビー */
+            --color-secondary: #FFD700; /* ゴールド */
+            --color-light: #F7F3E8; /* クリーム/オフホワイト */
+            --color-text-dark: #333333;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-light);
+            color: var(--color-text-dark);
+        }
+
+        /* 見出し用のフォント設定 */
+        .font-jazz-title {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* セクション間の区切り線 */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--color-secondary), transparent);
+            margin: 4rem 0;
+            opacity: 0.5;
+        }
+
+        /* ナビゲーションリンクのホバーエフェクト */
+        .nav-link-hover {
+            position: relative;
+            display: inline-block;
+        }
+        .nav-link-hover::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--color-secondary);
+            transition: width 0.3s ease-out;
+        }
+        .nav-link-hover:hover::after {
+            width: 100%;
+        }
+
+        /* ライブカードのホバーエフェクト */
+        .live-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(28, 49, 68, 0.2);
+        }
+
+        /* ヒーローセクションの背景グラデーション */
+        .hero-bg {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #08111a 100%);
+        }
+
+        /* ボタンのスタイル */
+        .btn-primary {
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #e0b400; /* 少し濃いゴールド */
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- ナビゲーションバー -->
+    <header class="bg-white/90 shadow-lg sticky top-0 z-50 backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- ロゴ -->
+            <a href="#" class="text-3xl font-jazz-title font-bold text-gray-800 hover:text-gray-900 transition duration-300">
+                <span class="text-primary-dark">Yu-</span><span class="text-yellow-600">pon</span>
+            </a>
+
+            <!-- ナビゲーションメニュー (デスクトップ) -->
+            <nav class="hidden md:flex space-x-8 text-lg">
+                <a href="#about" class="text-gray-700 nav-link-hover">About</a>
+                <a href="#music" class="text-gray-700 nav-link-hover">Music</a>
+                <a href="#live" class="text-gray-700 nav-link-hover">Live</a>
+                <a href="#contact" class="text-gray-700 nav-link-hover">Contact</a>
+            </nav>
+
+            <!-- モバイルメニューボタン -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+
+        <!-- モバイルメニュー (初期状態は非表示) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-sm">
+            <a href="#about" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 border-t">About</a>
+            <a href="#music" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 border-t">Music</a>
+            <a href="#live" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 border-t">Live</a>
+            <a href="#contact" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 border-t border-b">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- ヒーローセクション (バンドの顔となる部分) -->
+        <section class="hero-bg text-white py-20 md:py-32 flex items-center justify-center">
+            <div class="text-center px-6 max-w-4xl">
+                <h1 class="text-6xl md:text-8xl font-jazz-title font-extrabold mb-4 animate-fadeIn">
+                    Yu-pon
+                </h1>
+                <p class="text-xl md:text-2xl font-light mb-8 italic text-secondary-light tracking-widest animate-slideUp delay-200">
+                    A Symphony of Jazz, Funk, and Future Grooves.
+                </p>
+                <div class="space-x-4">
+                    <a href="#music" class="inline-block px-8 py-3 rounded-full text-lg font-semibold btn-primary shadow-lg animate-slideUp delay-400">
+                        LISTEN NOW
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT (バンド紹介) -->
+        <section id="about" class="container mx-auto px-6 py-20 md:py-24">
+            <h2 class="text-4xl md:text-5xl font-jazz-title font-bold text-center mb-12 text-gray-800">
+                About Yu-pon
+            </h2>
+            
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-lg leading-relaxed mb-6 text-gray-700">
+                    新進気鋭のユウポンは、伝統的なジャズの調和と、ファンク、フュージョン、そして現代的なエレクトロニクスを融合させた、革新的なサウンドを追求しています。彼らの音楽は、都市の夜景のように複雑でありながら、深く心地よいリズムで聴衆を魅了します。
+                </p>
+                <p class="text-lg leading-relaxed text-gray-700 italic">
+                    「我々のサウンドは、過去への敬意と未来への探求心との対話です。」
+                </p>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- メンバー紹介 (ダミー画像を使用) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mt-12">
+                <div class="text-center">
+                    <img src="https://placehold.co/400x400/1C3144/FFD700?text=Member+Y" alt="Yu-pon Band Member Y" class="rounded-full w-40 h-40 mx-auto object-cover border-4 border-secondary mb-4 shadow-xl">
+                    <h3 class="text-xl font-semibold font-jazz-title text-primary-dark">Yuki (Guitar)</h3>
+                    <p class="text-sm text-gray-600 mt-2">
+                        ギタリストであり、バンドのサウンドの核となる作曲家。メロディアスなフレーズとアバンギャルドなコードワークが特徴。
+                    </p>
+                </div>
+                <div class="text-center">
+                    <img src="https://placehold.co/400x400/1C3144/FFD700?text=Member+P" alt="Yu-pon Band Member P" class="rounded-full w-40 h-40 mx-auto object-cover border-4 border-secondary mb-4 shadow-xl">
+                    <h3 class="text-xl font-semibold font-jazz-title text-primary-dark">Pony (Bass)</h3>
+                    <p class="text-sm text-gray-600 mt-2">
+                        堅牢なグルーヴと、時折見せる華麗なソロでバンドの土台を支えるベーシスト。ファンクへの深い造詣を持つ。
+                    </p>
+                </div>
+                <div class="text-center">
+                    <img src="https://placehold.co/400x400/1C3144/FFD700?text=Member+N" alt="Yu-pon Band Member N" class="rounded-full w-40 h-40 mx-auto object-cover border-4 border-secondary mb-4 shadow-xl">
+                    <h3 class="text-xl font-semibold font-jazz-title text-primary-dark">Nao (Drums)</h3>
+                    <p class="text-sm text-gray-600 mt-2">
+                        複雑なポリリズムとダイナミックな演奏で、ユウポンの実験的なリズムセクションを担うドラマー。
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- MUSIC (楽曲紹介) -->
+        <section id="music" class="bg-gray-100 px-6 py-20 md:py-24">
+            <div class="container mx-auto">
+                <h2 class="text-4xl md:text-5xl font-jazz-title font-bold text-center mb-16 text-gray-800">
+                    Discography
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- アルバム/曲カード 1 -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
+                        <img src="https://placehold.co/600x600/1C3144/F7F3E8?text=ALBUM+A" alt="First Album Cover" class="w-full h-auto object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-jazz-title font-semibold mb-2 text-primary-dark">City Lights Echo</h3>
+                            <p class="text-sm text-gray-500 mb-4">Released: 2024.11.26</p>
+                            <p class="text-gray-700 mb-4 text-sm">
+                                デビューアルバム。都会の喧騒と静寂をテーマにした、フュージョンとチルアウトが交差する全10曲を収録。特にリードトラック「Neon Groove」は必聴。
+                            </p>
+                            <a href="#" class="text-secondary hover:text-yellow-600 font-semibold text-sm transition duration-300">
+                                試聴・購入 &rarr;
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- アルバム/曲カード 2 -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
+                        <img src="https://placehold.co/600x600/FFD700/1C3144?text=ALBUM+B" alt="Second Album Cover" class="w-full h-auto object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-jazz-title font-semibold mb-2 text-primary-dark">Rhythm Navigator</h3>
+                            <p class="text-sm text-gray-500 mb-4">Released: 2025.04.15</p>
+                            <p class="text-gray-700 mb-4 text-sm">
+                                複雑なリズムパターンに挑んだセカンドEP。ライブでの即興性を重視したアレンジが多く、バンドの技術力が光る一枚。
+                            </p>
+                            <a href="#" class="text-secondary hover:text-yellow-600 font-semibold text-sm transition duration-300">
+                                試聴・購入 &rarr;
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- アルバム/曲カード 3 -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
+                        <img src="https://placehold.co/600x600/333333/F7F3E8?text=SINGLE+C" alt="Latest Single Cover" class="w-full h-auto object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-jazz-title font-semibold mb-2 text-primary-dark">Ephemeral Blue</h3>
+                            <p class="text-sm text-gray-500 mb-4">Released: 2025.09.01</p>
+                            <p class="text-gray-700 mb-4 text-sm">
+                                最新のデジタルシングル。メロウなホーンセクションとモダンなビートが融合した、心地よいグルーヴのトラック。
+                            </p>
+                            <a href="#" class="text-secondary hover:text-yellow-600 font-semibold text-sm transition duration-300">
+                                試聴・購入 &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIVE (ライブ情報) -->
+        <section id="live" class="container mx-auto px-6 py-20 md:py-24">
+            <h2 class="text-4xl md:text-5xl font-jazz-title font-bold text-center mb-16 text-gray-800">
+                Upcoming Live
+            </h2>
+
+            <div class="max-w-4xl mx-auto space-y-8">
+                <!-- ライブ情報カード 1 -->
+                <div class="live-card bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary transition duration-300 flex flex-col md:flex-row justify-between items-start md:items-center">
+                    <div class="mb-4 md:mb-0">
+                        <p class="text-xs font-semibold text-secondary mb-1 uppercase tracking-wider">SPECIAL EVENT</p>
+                        <h3 class="text-2xl font-jazz-title font-bold text-primary-dark mb-1">Tokyo Jazz Night Festival</h3>
+                        <p class="text-gray-600">渋谷 BLUE NOTE (ゲスト出演)</p>
+                    </div>
+                    <div class="flex flex-col items-start md:items-end">
+                        <p class="text-lg font-bold text-gray-800">2026.01.20 (Tue)</p>
+                        <p class="text-sm text-gray-500 mb-3">OPEN: 18:00 / START: 19:00</p>
+                        <a href="#" class="px-4 py-2 text-sm rounded-full btn-primary font-semibold">
+                            TICKET &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ライブ情報カード 2 -->
+                <div class="live-card bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary transition duration-300 flex flex-col md:flex-row justify-between items-start md:items-center">
+                    <div class="mb-4 md:mb-0">
+                        <p class="text-xs font-semibold text-secondary mb-1 uppercase tracking-wider">TOUR</p>
+                        <h3 class="text-2xl font-jazz-title font-bold text-primary-dark mb-1">Yu-pon 1st Asia Tour in Osaka</h3>
+                        <p class="text-gray-600">梅田 Billboard Live OSAKA</p>
+                    </div>
+                    <div class="flex flex-col items-start md:items-end">
+                        <p class="text-lg font-bold text-gray-800">2026.02.10 (Fri)</p>
+                        <p class="text-sm text-gray-500 mb-3">OPEN: 19:00 / START: 20:00</p>
+                        <a href="#" class="px-4 py-2 text-sm rounded-full btn-primary font-semibold">
+                            TICKET &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ライブ情報カード 3 (過去のライブ) -->
+                <div class="live-card bg-gray-200 p-6 rounded-xl shadow-inner border-l-4 border-gray-400 opacity-60 flex flex-col md:flex-row justify-between items-start md:items-center">
+                    <div class="mb-4 md:mb-0">
+                        <p class="text-xs font-semibold text-gray-500 mb-1 uppercase tracking-wider">PAST SHOW</p>
+                        <h3 class="text-2xl font-jazz-title font-bold text-gray-500 mb-1">Sunset Session GIG</h3>
+                        <p class="text-gray-500">横浜 赤レンガ倉庫</p>
+                    </div>
+                    <div class="flex flex-col items-start md:items-end">
+                        <p class="text-lg font-bold text-gray-500">2025.10.05 (Sun)</p>
+                        <p class="text-sm text-gray-500 mb-3">SOLD OUT</p>
+                        <span class="px-4 py-2 text-sm rounded-full bg-gray-400 text-white font-semibold cursor-not-allowed">
+                            ARCHIVE
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- CONTACT (問い合わせ) -->
+        <section id="contact" class="container mx-auto px-6 py-20 md:py-24">
+            <h2 class="text-4xl md:text-5xl font-jazz-title font-bold text-center mb-12 text-gray-800">
+                Contact & Booking
+            </h2>
+
+            <div class="max-w-2xl mx-auto bg-white p-8 md:p-10 rounded-xl shadow-2xl">
+                <p class="text-center text-lg mb-6 text-gray-700">
+                    メディア出演、ライブブッキング、その他のお問い合わせはこちらのフォームをご利用ください。
+                </p>
+                <form onsubmit="handleSubmit(event)">
+                    <div class="mb-5">
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">お名前</label>
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-secondary focus:border-secondary transition duration-150">
+                    </div>
+                    <div class="mb-5">
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">メールアドレス</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-secondary focus:border-secondary transition duration-150">
+                    </div>
+                    <div class="mb-5">
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">お問い合わせ内容</label>
+                        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-secondary focus:border-secondary transition duration-150"></textarea>
+                    </div>
+                    <button type="submit" class="w-full px-4 py-3 rounded-lg text-lg font-semibold btn-primary shadow-lg">
+                        送信
+                    </button>
+                </form>
+
+                <div id="status-message" class="mt-6 text-center text-sm font-medium hidden"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- フッター -->
+    <footer class="hero-bg text-white py-10 md:py-12 mt-20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <!-- SNSアイコンのダミーリンク -->
+                <a href="#" class="text-gray-300 hover:text-secondary transition duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><!-- X/Twitter Icon --><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.309 8.24l-3.214 4.385-4.113-3.013 3.214-4.385 4.113 3.013zM14.613 9.47l-3.214 4.385-4.113-3.013 3.214-4.385 4.113 3.013zM12 4.414c-1.385 0-2.5 1.115-2.5 2.5s1.115 2.5 2.5 2.5 2.5-1.115 2.5-2.5-1.115-2.5-2.5-2.5zm0 15.172c-1.385 0-2.5-1.115-2.5-2.5s1.115-2.5 2.5-2.5 2.5 1.115 2.5 2.5-1.115 2.5-2.5 2.5z"/></svg>
+                </a>
+                <a href="#" class="text-gray-300 hover:text-secondary transition duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><!-- Instagram Icon --><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.245.166 4.67 1.353 4.834 4.834.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.164 3.481-1.6 4.668-4.834 4.834-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.245-.166-4.67-1.353-4.834-4.834-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.164-3.481 1.6-4.668 4.834-4.834 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.266 0-3.67.014-4.945.074-4.22 1.645-5.698 3.123-5.863 7.346-.06 1.275-.074 1.679-.074 4.945s.014 3.67.074 4.945c.165 4.22 1.643 5.698 5.863 5.863 1.275.06 1.679.074 4.945.074s3.67-.014 4.945-.074c4.22-.165 5.698-1.643 5.863-5.863.06-1.275.074-1.679.074-4.945s-.014-3.67-.074-4.945c-.165-4.22-1.643-5.698-5.863-5.863-1.275-.06-1.679-.074-4.945-.074zm0 6.641c-2.433 0-4.4 1.967-4.4 4.4s1.967 4.4 4.4 4.4 4.4-1.967 4.4-4.4-1.967-4.4-4.4-4.4zm0 6.4c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2zM17.16 6.3c.582 0 1.054.472 1.054 1.054s-.472 1.054-1.054 1.054-1.054-.472-1.054-1.054.472-1.054 1.054-1.054z"/></svg>
+                </a>
+                <a href="#" class="text-gray-300 hover:text-secondary transition duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><!-- YouTube Icon --><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.342 12.02l-4.102 2.42c-.657.387-1.127.042-1.127-.72V8.293c0-.763.47-.978 1.127-.636l4.102 2.42c.62.368.62.964 0 1.332z"/></svg>
+                </a>
+            </div>
+            <p class="text-sm text-gray-400">&copy; 2025 Yu-pon Official. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu and Form Handling -->
+    <script>
+        // DOMContentLoadedが発火してから実行
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = mobileMenu.querySelectorAll('a');
+
+            // モバイルメニューのトグル機能
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // モバイルメニューのリンクをクリックしたらメニューを閉じる
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // スムーズスクロール (オプショナル: CSSでscroll-behavior: smooth; を指定しても良い)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+
+        // フォーム送信処理 (ダミー)
+        function handleSubmit(event) {
+            event.preventDefault(); // フォームのデフォルト送信を防止
+            const statusMessage = document.getElementById('status-message');
+            const form = event.target;
+            
+            statusMessage.classList.remove('hidden', 'text-red-600', 'text-green-600');
+            statusMessage.classList.add('text-gray-500');
+            statusMessage.textContent = '送信中...';
+
+            // 擬似的な非同期送信処理
+            setTimeout(() => {
+                const isSuccess = Math.random() > 0.1; // 90%の確率で成功
+
+                if (isSuccess) {
+                    statusMessage.textContent = 'お問い合わせを受け付けました。ありがとうございます！';
+                    statusMessage.classList.remove('text-gray-500');
+                    statusMessage.classList.add('text-green-600');
+                    form.reset(); // フォームをクリア
+                } else {
+                    statusMessage.textContent = '送信中にエラーが発生しました。時間をおいて再度お試しください。';
+                    statusMessage.classList.remove('text-gray-500');
+                    statusMessage.classList.add('text-red-600');
+                }
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
